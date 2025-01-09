@@ -10,7 +10,7 @@ declare global {
         options: {
           apiKey: string;
           onSuccess: (wafToken: string) => void;
-          onError: (error: unknown) => void;
+          onError: () => void;
         }
       ) => void;
     };
@@ -42,8 +42,8 @@ export default function HomePage() {
               setCaptchaToken(token);
               setCaptchaVisible(false); 
             },
-            onError: (error: unknown) => {
-              console.error("Erreur CAPTCHA :", error);
+            onError: () => {
+              console.error("Erreur CAPTCHA");
             },
           });
         } else {
@@ -91,7 +91,7 @@ export default function HomePage() {
           } else {
             newSequence.push(`${i}. ${response.statusText}`);
           }
-        } catch (error) {
+        } catch  {
           newSequence.push(`${i}. Error`);
         }
 
