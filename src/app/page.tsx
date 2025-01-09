@@ -37,7 +37,7 @@ export default function HomePage() {
         const container = document.getElementById("captcha-container");
         if (window.AwsWafCaptcha && container) {
           window.AwsWafCaptcha.renderCaptcha(container, {
-            apiKey: "votre_clé_api_ici",
+            apiKey: process.env.API_KEY as string,
             onSuccess: (token: string) => {
               setCaptchaToken(token);
               setCaptchaVisible(false); 
